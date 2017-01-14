@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "next build",
+    "start": "NODE_ENV=production async-node ./index.js",
+    "dev": "NODE_ENV=development async-node ./index.js"
+  },
+  "dependencies": {
+    "async-to-gen": "1.3.0",
+    "axios": "0.15.3",
+    "js-cookie": "2.1.3",
+    "jsonwebtoken": "7.2.1",
+    "lodash.debounce": "4.0.8",
+    "micro": "6.1.0",
+    "next": "2.0.0-beta.17"
+  }
+}
