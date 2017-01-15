@@ -1,6 +1,6 @@
 import Link from 'next/prefetch'
 import injectEnvironmentVar from '../components/injectEnvironmentVar'
-import withSession from '../components/withSession'
+import injectSession from '../components/injectSession'
 import withLayout from '../components/withLayout'
 
 class Home extends React.Component {
@@ -25,7 +25,7 @@ class Home extends React.Component {
 const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
 
 export default (
-  withSession(
+  injectSession(
     withLayout(
       injectAuthApiUrl(
         Home

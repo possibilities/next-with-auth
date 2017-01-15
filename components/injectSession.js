@@ -1,5 +1,5 @@
-const withSession = Page => {
-  return class WithSession extends React.Component {
+const injectSession = Page => {
+  return class InjectSession extends React.Component {
     static getInitialProps(context) {
       const pageProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
 
@@ -22,4 +22,4 @@ const withSession = Page => {
   }
 }
 
-export default withSession
+export default injectSession

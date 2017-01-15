@@ -1,5 +1,5 @@
 import withLayout from '../components/withLayout'
-import withSession from '../components/withSession'
+import injectSession from '../components/injectSession'
 import injectEnvironmentVar from '../components/injectEnvironmentVar'
 
 const Other = () => {
@@ -9,7 +9,7 @@ const Other = () => {
 const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
 
 export default (
-  withSession(
+  injectSession(
     withLayout(
       injectAuthApiUrl(
         Other
