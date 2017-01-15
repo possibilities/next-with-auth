@@ -1,4 +1,4 @@
-import withLayout from '../components/withLayout'
+import wrapWithLayout from '../components/wrapWithLayout'
 import injectEnvironmentVar from '../components/injectEnvironmentVar'
 import ensureSignedIn from '../components/ensureSignedIn'
 import injectSession from '../components/injectSession'
@@ -11,7 +11,7 @@ const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
 
 export default (
   injectSession(
-    withLayout(
+    wrapWithLayout(
       injectAuthApiUrl(
         ensureSignedIn(
           Secret

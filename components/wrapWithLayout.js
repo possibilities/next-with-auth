@@ -1,7 +1,7 @@
 import Menu from './Menu'
 
-const withLayout = Page => {
-  return class WithLayout extends React.Component {
+const wrapWithLayout = Page => {
+  return class WrapWithLayout extends React.Component {
     static getInitialProps(context) {
       if (Page.getInitialProps) {
         return Page.getInitialProps(context)
@@ -35,4 +35,4 @@ const withLayout = Page => {
   }
 }
 
-export default withLayout
+export default wrapWithLayout
