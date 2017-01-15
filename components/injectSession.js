@@ -1,5 +1,10 @@
 const injectSession = Page => {
   return class InjectSession extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {}
+    }
+
     static getInitialProps(context) {
       const pageProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
 
@@ -17,7 +22,30 @@ const injectSession = Page => {
     }
 
     render() {
-      return <Page {...this.props} />
+      return <Page {...this.props} {...this.state} />
+    }
+
+    componentWillMount() {
+      if (process.browser) {
+        console.log('listening')
+        window.addEventListener('storage', this.handleStorageChange)
+      }
+    }
+
+    componentWillUnmount() {
+      if (process.browser) {
+        window.removeEventListener('storage', this.handleStorageChange)
+      }
+    }
+
+    handleStorageChange = event => {
+      if (event.key === 'session') {
+        if (event.newValue) {
+          this.setState({ session: JSON.parse(event.newValue) })
+        } else {
+          this.setState({ session: null })
+        }
+      }
     }
   }
 }
