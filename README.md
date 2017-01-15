@@ -12,7 +12,7 @@ npm install
 AUTHENTICATION_SECRET_KEY=password123 npm start
 ```
 
-Then run the example app using the same secret and provide localhost has the api url
+Then run the example app using the same secret and provide localhost as the api url
 
 ```
 cd /tmp
