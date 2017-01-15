@@ -27,7 +27,6 @@ const injectSession = Page => {
 
     componentWillMount() {
       if (process.browser) {
-        console.log('listening')
         window.addEventListener('storage', this.handleStorageChange)
       }
     }
