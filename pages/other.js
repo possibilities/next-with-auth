@@ -1,19 +1,5 @@
-import wrapWithLayout from '../components/wrapWithLayout'
-import injectSession from '../components/injectSession'
-import injectEnvironmentVar from '../components/injectEnvironmentVar'
+import Page from '../components/Page'
 
-const Other = () => {
-  return <div>another page, just for demo purposes</div>
-}
+const Other = () => <div>another page, just for demo purposes</div>
 
-const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
-
-export default (
-  injectSession(
-    wrapWithLayout(
-      injectAuthApiUrl(
-        Other
-      )
-    )
-  )
-)
+export default Page(Other)

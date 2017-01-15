@@ -1,6 +1,4 @@
-import injectEnvironmentVar from '../components/injectEnvironmentVar'
-import injectSession from '../components/injectSession'
-import wrapWithLayout from '../components/wrapWithLayout'
+import Page from '../components/Page'
 import Cookie from 'js-cookie'
 
 class SignOut extends React.Component {
@@ -19,14 +17,4 @@ class SignOut extends React.Component {
   }
 }
 
-const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
-
-export default (
-  injectSession(
-    wrapWithLayout(
-      injectAuthApiUrl(
-        SignOut
-      )
-    )
-  )
-)
+export default Page(SignOut)

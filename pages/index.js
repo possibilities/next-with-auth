@@ -1,7 +1,5 @@
 import Link from 'next/prefetch'
-import injectEnvironmentVar from '../components/injectEnvironmentVar'
-import injectSession from '../components/injectSession'
-import wrapWithLayout from '../components/wrapWithLayout'
+import Page from '../components/Page'
 
 class Home extends React.Component {
   render() {
@@ -22,14 +20,4 @@ class Home extends React.Component {
   }
 }
 
-const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
-
-export default (
-  injectSession(
-    wrapWithLayout(
-      injectAuthApiUrl(
-        Home
-      )
-    )
-  )
-)
+export default Page(Home)
