@@ -34,8 +34,13 @@ const extractSessionFromCookie = req => {
       if (token) {
 
         // Decode the token and return it
-        const session = jwt.verify(token, authenticationSecretKey)
-        return session
+        let session
+        try {
+          session = jwt.verify(token, authenticationSecretKey)
+          return session
+        } catch(error) {
+          console.error(error)
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import withEnvironmentVariables from '../components/withEnvironmentVariables'
+import injectEnvironmentVar from '../components/injectEnvironmentVar'
 import withSession from '../components/withSession'
 import withLayout from '../components/withLayout'
 import Cookie from 'js-cookie'
@@ -19,12 +19,13 @@ class SignOut extends React.Component {
   }
 }
 
+const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
+
 export default (
-  withLayout(
-    withSession(
-      withEnvironmentVariables(
-        SignOut,
-        ['AUTHENTICATION_API_URL']
+  withSession(
+    withLayout(
+      injectAuthApiUrl(
+        SignOut
       )
     )
   )
