@@ -10,10 +10,15 @@ const ensureSignedIn = Page => {
 
     constructor(props) {
       super(props)
-      if (!props.session) {
-        if (process.browser) {
-          this.props.url.push('/sign-in?next=' + encodeURI(window.location))
-        }
+
+      if (process.browser && !props.session) {
+        this.props.url.push('/sign-in?next=' + encodeURI(window.location))
+      }
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (process.browser && !nextProps.session) {
+        this.props.url.push('/sign-in?next=' + encodeURI(window.location))
       }
     }
 
