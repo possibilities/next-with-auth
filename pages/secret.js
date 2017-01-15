@@ -1,6 +1,6 @@
 import withLayout from '../components/withLayout'
 import injectEnvironmentVar from '../components/injectEnvironmentVar'
-import withProtection from '../components/withProtection'
+import ensureSignedIn from '../components/ensureSignedIn'
 import withSession from '../components/withSession'
 
 const Secret = () => {
@@ -13,7 +13,7 @@ export default (
   withSession(
     withLayout(
       injectAuthApiUrl(
-        withProtection(
+        ensureSignedIn(
           Secret
         )
       )

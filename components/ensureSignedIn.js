@@ -1,5 +1,5 @@
-const withProtection = Page => {
-  return class withProtection extends React.Component {
+const ensureSignedIn = Page => {
+  return class EnsureSignedIn extends React.Component {
     static getInitialProps(context) {
       if (Page.getInitialProps) {
         return Page.getInitialProps(context)
@@ -33,4 +33,4 @@ const withProtection = Page => {
   }
 }
 
-export default withProtection
+export default ensureSignedIn
