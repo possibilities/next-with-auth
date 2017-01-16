@@ -20,7 +20,7 @@ const wrapWithLayout = Page => {
             .layout {
               font-family: Arial, Helvetica, sans-serif;
               position: relative;
-              width: 900px;
+              max-width: 700px;
               margin: 0 auto;
             }
           `}</style>
