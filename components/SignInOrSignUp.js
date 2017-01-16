@@ -1,15 +1,16 @@
+import React from 'react'
 import request from 'axios'
 import Cookie from 'js-cookie'
 import debounce from 'lodash.debounce'
 
 const BUTTON_LABEL = {
   signin: 'sign in',
-  signup: 'sign up',
+  signup: 'sign up'
 }
 
 const ENDPOINT_PATH = {
   signin: 'sign-in',
-  signup: 'sign-up',
+  signup: 'sign-up'
 }
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -22,8 +23,8 @@ if (!process.browser && !process.env.AUTHENTICATION_API_URL) {
 export default class SignInOrSignUp extends React.Component {
   state = { errorMessage: null }
 
-  render() { const { session, mode } = this.props
-    const isSignedIn = !!session
+  render () {
+    const { mode } = this.props
     const { errorMessage } = this.state
 
     return (
@@ -44,21 +45,21 @@ export default class SignInOrSignUp extends React.Component {
         `}</style>
 
         {errorMessage && (
-          <div className="errorMessage">{errorMessage}</div>
+          <div className='errorMessage'>{errorMessage}</div>
         )}
 
         <div>
           <input
-            ref="username"
-            placeholder="username"
-            onKeyUp={this.handleUsernameChange} />
+            ref='username'
+            placeholder='username'
+            onKeyUp={this.handleUsernameKeyUp} />
         </div>
         <div>
           <input
-            ref="password"
-            type="password"
-            placeholder="password"
-            onKeyUp={this.handlePasswordChange} />
+            ref='password'
+            type='password'
+            placeholder='password'
+            onKeyUp={this.handlePasswordKeyUp} />
         </div>
         <div>
           <button onClick={this.handleSubmit}>{BUTTON_LABEL[mode]}!</button>
@@ -79,7 +80,7 @@ export default class SignInOrSignUp extends React.Component {
   checkUsernameAvailableDebounced =
     debounce(this.checkUsernameAvailable, 500)
 
-  handleUsernameChange = () => {
+  handleUsernameKeyUp = event => {
     this.setState({ errorMessage: null })
     if (event.keyCode === 13) { // Enter
       return this.handleSubmit()
@@ -89,7 +90,7 @@ export default class SignInOrSignUp extends React.Component {
     }
   }
 
-  handlePasswordChange = event => {
+  handlePasswordKeyUp = event => {
     this.setState({ errorMessage: null })
     if (event.keyCode === 13) { // Enter
       return this.handleSubmit()
@@ -108,7 +109,7 @@ export default class SignInOrSignUp extends React.Component {
     try {
       const apiUrl = `${this.props.AUTHENTICATION_API_URL}/${ENDPOINT_PATH[mode]}`
       response = await request.post(apiUrl, { username, password })
-    } catch(error) {
+    } catch (error) {
       this.setState({ errorMessage: error.response.data.message })
       console.error(error)
     }
@@ -117,7 +118,7 @@ export default class SignInOrSignUp extends React.Component {
       const session = response.data
 
       // Store the token for the benefit of client and server
-      localStorage.setItem('session', JSON.stringify(session))
+      window.localStorage.setItem('session', JSON.stringify(session))
       Cookie.set('token', session.token, { secure: isProduction })
 
       // Redirect to the next URL or home

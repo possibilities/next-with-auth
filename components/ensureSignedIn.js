@@ -1,6 +1,8 @@
+import React from 'react'
+
 const ensureSignedIn = Page => {
   return class EnsureSignedIn extends React.Component {
-    static getInitialProps(context) {
+    static getInitialProps (context) {
       if (Page.getInitialProps) {
         return Page.getInitialProps(context)
       } else {
@@ -8,7 +10,7 @@ const ensureSignedIn = Page => {
       }
     }
 
-    constructor(props) {
+    constructor (props) {
       super(props)
 
       if (process.browser && !props.session) {
@@ -16,13 +18,13 @@ const ensureSignedIn = Page => {
       }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
       if (process.browser && !nextProps.session) {
         this.props.url.push('/sign-in?next=' + encodeURI(window.location))
       }
     }
 
-    render() {
+    render () {
       const isSignedIn = !!this.props.session
 
       if (isSignedIn) {

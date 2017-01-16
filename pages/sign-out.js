@@ -1,8 +1,9 @@
+import React from 'react'
 import Page from '../components/Page'
 import Cookie from 'js-cookie'
 
 class SignOut extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     if (process.browser) {
       window.localStorage.removeItem('session')
       Cookie.remove('token')
@@ -10,7 +11,7 @@ class SignOut extends React.Component {
     this.props.url.push('/')
   }
 
-  render() {
+  render () {
     return (
       <div>signing out...</div>
     )

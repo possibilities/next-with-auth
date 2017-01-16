@@ -1,8 +1,9 @@
+import React from 'react'
 import Menu from './Menu'
 
 const wrapWithLayout = Page => {
   return class WrapWithLayout extends React.Component {
-    static getInitialProps(context) {
+    static getInitialProps (context) {
       if (Page.getInitialProps) {
         return Page.getInitialProps(context)
       } else {
@@ -10,12 +11,12 @@ const wrapWithLayout = Page => {
       }
     }
 
-    render() {
+    render () {
       const isSignedIn = !!this.props.session
       const username = isSignedIn && this.props.session.username
 
       return (
-        <div className="mooof">
+        <div className='mooof'>
           <style jsx>{`
             .layout {
               font-family: Arial, Helvetica, sans-serif;
@@ -25,7 +26,7 @@ const wrapWithLayout = Page => {
             }
           `}</style>
 
-          <div className="layout">
+          <div className='layout'>
             <Menu isSignedIn={isSignedIn} username={username} />
             <Page {...this.props} />
           </div>

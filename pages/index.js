@@ -1,8 +1,9 @@
+import React from 'react'
 import Link from 'next/prefetch'
 import Page from '../components/Page'
 
 class Home extends React.Component {
-  render() {
+  render () {
     const { session } = this.props
 
     if (session) {
@@ -13,7 +14,7 @@ class Home extends React.Component {
     } else {
       return (
         <div>
-          <Link href="/sign-in">sign in</Link> to continue!
+          <Link href='/sign-in'>sign in</Link> to continue!
         </div>
       )
     }

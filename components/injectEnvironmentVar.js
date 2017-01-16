@@ -1,14 +1,13 @@
-// Usage
-// `export default injectEnvironmentVar(SignIn, ['AUTHENTICATION_API_URL'])`
+import React from 'react'
 
 const injectEnvironmentVar = varName => Page => {
-  if (!process.browser && typeof(process.env[varName]) === undefined) {
+  if (!process.browser && typeof (process.env[varName]) === undefined) {
     console.error(`${varName} environment variable is required`)
     process.exit(1)
   }
 
   return class InjectEnvironmentVar extends React.Component {
-    static getInitialProps(context) {
+    static getInitialProps (context) {
       // Get the page's own initial props
       const pageProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
       // Dig the specified environment variables up from the
@@ -18,7 +17,7 @@ const injectEnvironmentVar = varName => Page => {
       return { ...pageProps, [varName]: env[varName] }
     }
 
-    constructor(props) {
+    constructor (props) {
       super(props)
       // If we're on the client we want to copy all environment variables
       // to the global namespace so other pages will be able to grab them
@@ -29,7 +28,7 @@ const injectEnvironmentVar = varName => Page => {
       }
     }
 
-    render() {
+    render () {
       return (
         <Page {...this.props} />
       )

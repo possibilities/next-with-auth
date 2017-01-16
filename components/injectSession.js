@@ -1,16 +1,18 @@
+import React from 'react'
+
 const injectSession = Page => {
   return class InjectSession extends React.Component {
-    constructor(props) {
+    constructor (props) {
       super(props)
       this.state = {}
     }
 
-    static getInitialProps(context) {
+    static getInitialProps (context) {
       const pageProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
 
       let session
-      if (process.browser && localStorage.getItem('session')) {
-        session = localStorage.getItem('session')
+      if (process.browser && window.localStorage.getItem('session')) {
+        session = window.localStorage.getItem('session')
         if (session) {
           session = JSON.parse(session)
         }
@@ -21,17 +23,17 @@ const injectSession = Page => {
       return { ...pageProps, session }
     }
 
-    render() {
+    render () {
       return <Page {...this.props} {...this.state} />
     }
 
-    componentWillMount() {
+    componentWillMount () {
       if (process.browser) {
         window.addEventListener('storage', this.handleStorageChange)
       }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
       if (process.browser) {
         window.removeEventListener('storage', this.handleStorageChange)
       }

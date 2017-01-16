@@ -21,9 +21,9 @@ export default ({ isSignedIn, username }) => {
           }
         `}</style>
 
-        <li><Link href="/">home</Link></li>
-        <li><Link href="/other">other</Link></li>
-        <li><Link href="/secret">secret</Link></li>
+        <li><Link href='/'>home</Link></li>
+        <li><Link href='/other'>other</Link></li>
+        <li><Link href='/secret'>secret</Link></li>
       </ul>
 
       <ul>
@@ -50,11 +50,11 @@ export default ({ isSignedIn, username }) => {
           }
         `}</style>
 
-        {!isSignedIn && <li><Link href="/sign-in">sign in</Link></li>}
-        {!isSignedIn && <li><Link href="/sign-up">sign up</Link></li>}
+        {!isSignedIn && <li><Link href='/sign-in'>sign in</Link></li>}
+        {!isSignedIn && <li><Link href='/sign-up'>sign up</Link></li>}
         {isSignedIn && (
           <li>
-            <span>{username}</span> <Link href="/sign-out">sign out</Link>
+            <span>{username}</span> <Link href='/sign-out'>sign out</Link>
           </li>
         )}
       </ul>

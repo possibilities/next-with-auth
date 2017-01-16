@@ -17,7 +17,6 @@ const extractSessionFromCookie = req => {
   // Skip if there's no cookie
   // Also skip urls that start with `_` e.g. `__next/*`
   if (cookie && req.url[1] !== '_') {
-
     // Pull out the `token` cookie
     const tokenCookie = cookie
       .split(';')
@@ -26,19 +25,17 @@ const extractSessionFromCookie = req => {
 
     // If there's a token
     if (tokenCookie) {
-
       // Pull out and cleanup token
       const token = tokenCookie.split('=').pop().trim()
 
       // If there's a cleaned up token
       if (token) {
-
         // Decode the token and return it
         let session
         try {
           session = jwt.verify(token, authenticationSecretKey)
           return session
-        } catch(error) {
+        } catch (error) {
           console.error(error)
         }
       }
@@ -53,7 +50,8 @@ const extractSessionFromCookie = req => {
 const main = async () => {
   const app = next({ dev: !isProduction })
   const nextRequestHandler = app.getRequestHandler()
-  const readyApp = await app.prepare()
+
+  await app.prepare()
 
   micro((req, res) => {
     // Extract the session and cache it
@@ -61,7 +59,6 @@ const main = async () => {
 
     // Let next handle the request
     return nextRequestHandler(req, res)
-
   }).listen(port)
 
   console.info(`listening on port ${port}...`)
