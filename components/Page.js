@@ -1,6 +1,6 @@
-import injectEnvironmentVar from '../components/injectEnvironmentVar'
-import injectSession from '../components/injectSession'
-import wrapWithLayout from '../components/wrapWithLayout'
+import injectEnvironmentVar from './injectEnvironmentVar'
+import injectSession from './injectSession'
+import wrapWithLayout from './wrapWithLayout'
 import compose from '../modules/compose'
 
 const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
