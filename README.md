@@ -11,7 +11,7 @@ cd /tmp
 git clone https://github.com/possibilities/micro-auth.git
 cd micro-auth
 npm install
-AUTHENTICATION_SECRET_KEY=password123 AUTHENTICATION_API_PORT=5555 npm run dev
+AUTHENTICATION_SECRET_KEY=password123 API_PORT=5555 npm run dev
 ```
 
 Then run the example app using the same secret and provide localhost as the api url
