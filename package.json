@@ -14,7 +14,7 @@
     "jsonwebtoken": "7.2.1",
     "lodash.compose": "^2.4.1",
     "lodash.debounce": "4.0.8",
-    "micro": "6.1.0",
+    "micro": "6.2.0",
     "next": "2.0.0-beta.17"
   },
   "standard": {
