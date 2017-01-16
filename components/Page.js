@@ -5,4 +5,5 @@ import compose from 'lodash.compose'
 
 const injectAuthApiUrl = injectEnvironmentVar('AUTHENTICATION_API_URL')
 
+// A pile of middleware that we use on every page
 export default compose(injectSession, wrapWithLayout, injectAuthApiUrl)

@@ -1,19 +1,18 @@
 import React from 'react'
 import Menu from './Menu'
 
+// Wraps a global layout around a page
+
 const wrapWithLayout = Page => {
   return class WrapWithLayout extends React.Component {
     static getInitialProps (context) {
-      if (Page.getInitialProps) {
-        return Page.getInitialProps(context)
-      } else {
-        return {}
-      }
+      return Page.getInitialProps
+        ? Page.getInitialProps(context)
+        : {}
     }
 
     render () {
-      const isSignedIn = !!this.props.session
-      const username = isSignedIn && this.props.session.username
+      const { username } = this.props.session || {}
 
       return (
         <div className='mooof'>
@@ -27,7 +26,7 @@ const wrapWithLayout = Page => {
           `}</style>
 
           <div className='layout'>
-            <Menu isSignedIn={isSignedIn} username={username} />
+            <Menu username={username} />
             <Page {...this.props} />
           </div>
         </div>

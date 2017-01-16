@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default ({ isSignedIn, username }) => {
+export default ({ username }) => {
   return (
     <div>
       <ul>
@@ -50,9 +50,9 @@ export default ({ isSignedIn, username }) => {
           }
         `}</style>
 
-        {!isSignedIn && <li><Link href='/sign-in'>sign in</Link></li>}
-        {!isSignedIn && <li><Link href='/sign-up'>sign up</Link></li>}
-        {isSignedIn && (
+        {!username && <li><Link href='/sign-in'>sign in</Link></li>}
+        {!username && <li><Link href='/sign-up'>sign up</Link></li>}
+        {username && (
           <li>
             <span>{username}</span> <Link href='/sign-out'>sign out</Link>
           </li>
