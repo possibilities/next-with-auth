@@ -1,5 +1,7 @@
 # Next.js example with auth
 
+[![CircleCI](https://circleci.com/gh/possibilities/next.js-with-auth.svg?style=svg)](https://circleci.com/gh/possibilities/next.js-with-auth)
+
 ### Usage
 
 First run the auth service in a terminal tab/window/panel
