@@ -1,6 +1,6 @@
 # Next.js example with auth
 
-[![CircleCI](https://circleci.com/gh/possibilities/next.js-with-auth.svg?style=svg)](https://circleci.com/gh/possibilities/next.js-with-auth)
+[![CircleCI](https://circleci.com/gh/possibilities/next-with-auth.svg?style=svg)](https://circleci.com/gh/possibilities/next-with-auth)
 
 ### Usage
 
@@ -18,8 +18,8 @@ Then run the example app using the same secret and provide localhost as the api 
 
 ```
 cd /tmp
-git clone https://github.com/possibilities/next.js-with-auth.git
-cd next.js-with-auth
+git clone https://github.com/possibilities/next-with-auth.git
+cd next-with-auth
 npm install
 AUTHENTICATION_SECRET_KEY=password123 AUTHENTICATION_API_URL=http://localhost:5555 npm run dev
 ```
