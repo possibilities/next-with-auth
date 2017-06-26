@@ -25,9 +25,9 @@ const injectSession = Page => {
       this.state = {}
     }
 
-    static getInitialProps (context) {
+    static async getInitialProps (context) {
       // Get the page's own initial props
-      const initialProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
+      const initialProps = Page.getInitialProps ? await Page.getInitialProps(context) : {}
 
       // Dig the session out of localstorage (on client) or the request (on
       // server)

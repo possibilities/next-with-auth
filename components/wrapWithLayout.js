@@ -5,9 +5,9 @@ import Menu from './Menu'
 
 const wrapWithLayout = Page => {
   return class WrapWithLayout extends React.Component {
-    static getInitialProps (context) {
+    static async getInitialProps (context) {
       return Page.getInitialProps
-        ? Page.getInitialProps(context)
+        ? await Page.getInitialProps(context)
         : {}
     }
 

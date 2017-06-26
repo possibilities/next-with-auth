@@ -9,9 +9,9 @@ import React from 'react'
 
 const ensureSignedIn = Page => {
   return class EnsureSignedIn extends React.Component {
-    static getInitialProps (context) {
+    static async getInitialProps (context) {
       // If the page has a prop fetcher invoke it
-      return Page.getInitialProps ? Page.getInitialProps(context) : {}
+      return Page.getInitialProps ? await Page.getInitialProps(context) : {}
     }
 
     constructor (props) {
